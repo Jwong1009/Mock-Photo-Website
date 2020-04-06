@@ -1,0 +1,38 @@
+html {
+    height: 100%;
+}
+body {
+    background-color: rgb(201, 201, 192);
+    height: 75%;
+}
+
+#all-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    
+}
+ #formdiv {
+    margin: auto;
+    background-color: rgb(192, 185, 184); 
+    box-shadow: 0 0 10px;
+    text-align: center;
+    padding: 1% 5% 2% 5%;
+} 
+
+#formdiv input[type="file"] {
+    display: inline-block;
+}
+
+input[type=submit] {
+    background-color: rgb(238, 238, 238);
+}
+
+#img {
+    display: flex;
+}
+
+#img img {
+    margin: 0 10px 0 0;
+}

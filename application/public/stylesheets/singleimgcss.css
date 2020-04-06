@@ -1,0 +1,80 @@
+html {
+    height: 100%;
+}
+body {
+    background-color: rgb(201, 201, 192);
+    height: 75%;
+}
+#logo {
+    display: flex;
+}
+
+#logo img {
+    margin: 0 10px 10px 0;
+}
+
+h2 {
+    font-size: 35px;
+    color: rgb(77, 76, 76);
+    font-weight: bold;
+    margin: 0;
+}
+
+.photo-area img {
+    border: 1.5px solid black;
+}
+.photo-area {
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+
+}
+
+.description {
+    margin: 24px;
+    background-color: rgb(192, 185, 184); 
+    box-shadow: 0 0 10px;
+    text-align: left;
+    padding: 2% 5% 2% 5%;
+    width: 240px;
+    height: 150px;
+}
+.chatbox {
+    margin: 24px;
+    background-color: rgb(192, 185, 184); 
+    box-shadow: 0 0 10px;
+    text-align: left;
+    padding: 2% 5% 2% 5%;
+    align-content: center;
+    width: 500px;
+}
+.chat {
+    background-color: white;
+    width: 500px;
+    height: 600px;
+    height: 50%;
+    text-align: right;
+}
+
+
+.item {
+    width: 600px;
+    min-height: 120px;
+    float: left;
+    margin: 3px;
+    padding: 1px;
+}
+
+.photo-descript {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.all {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}

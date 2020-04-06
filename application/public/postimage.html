@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title> Post Image</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/postimagecss.css">
+</head>
+
+<body>
+    <div id="img">
+        <a href="/">
+            <img src="images/camera-logo.png" alt="home" width="100" height="100">
+        </a>
+        <h1>Photo App</h1>
+    </div>
+    <div id="all-form">
+        <div id="formdiv">
+            <h2>Upload an Image </h2>
+            <form>
+                <label for="title"> Title</label>
+                <input type="text" title="title" placeholder="Image Title" required />
+                <br />
+                <label for="Description"> Description</label>
+                <input type="text" description=description placeholder="Description of Image" required/>
+                <br/>
+                <label for="select"> Select image: </label>
+                <input type="file" id="img" name="img" accept="image/*" required/>
+                <br/>
+                <input type="checkbox" checkbox="checkbox" required/>
+                <label for="tos"> I have read and accept the <a href="#"> Acceptable Use Policy</a> for uploading
+                    images</label>
+                <br />
+                <input type="submit" submit=submit required/>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

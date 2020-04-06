@@ -1,0 +1,33 @@
+html {
+    height: 100%;
+}
+body {
+    background-color: rgb(201, 201, 192);
+    height: 75%;
+}
+
+#main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+ .input-form {
+    margin: auto;
+    background-color: rgb(192, 185, 184); 
+    box-shadow: 0 0 10px;
+    text-align: center;
+    padding: 1% 5% 2% 5%;
+} 
+
+input[type=submit] {
+    background-color: rgb(238, 238, 238);
+}
+
+#img {
+    display: flex;
+}
+
+#img img {
+    margin: 0 10px 0 0;
+}
