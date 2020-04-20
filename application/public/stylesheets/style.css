@@ -14,7 +14,7 @@ body {
     margin: 0 10px 10px 0;
 }
 
-.header-area, .search-upload{
+.header-area, .search-upload-login{
     display: flex;
     justify-content: space-between;
 } 
@@ -28,15 +28,17 @@ body {
     height: 20px;
 }
 
+.button-style, .other-btn, .upload-btn{
+    align-self: flex-end;
+    padding: 5px;
+
+}
+
 .btn {
     border: none;
     font-size: 16px;
     cursor: pointer;
     border-radius: 5%;
-}
-.button-style, .upload-btn{
-    align-self: flex-end;
-    padding: 5px ;
 }
 
 .btn:hover {
@@ -67,15 +69,4 @@ body {
 }
 .picture-grid img:hover{
     opacity: 80%;
-}
-
-
-footer {
-    padding: 10px;
-    font-size: 17px;
-    font-weight: bold;
-    text-align: center;
-    background-color: rgb(192, 185, 184);
-    letter-spacing: 1px;
-    margin-top: 20px;
 }

@@ -18,18 +18,17 @@
     <div id="main">
         <div class="input-form">
             <h2>Sign In</h2>
-            <form id="inputs">
+            <form id="inputs" action="users/login" method="POST" enctype="application/x-www-form-urlencoded">
                 <label for="username"> Username</label>
-                <input type="text" name="username" required placeholder="Username" />
+                <input id="username" type="text" name="username" required placeholder="Username" />
                 <br />
                 <label for="password"> Password </label>
-                <input type="password" password="password" required placeholder="Password" />
+                <input id="password" type="password" name="password" required placeholder="Password" />
                 <br />
-                <input type="submit" submit=submit required>
+                <input type="submit" value="Submit" required>
             </form>
             <label for="register"> Don't have an account? <a href="/register"> Register Now </a> </label>
         </div>
     </div>
 </body>
-
 </html>

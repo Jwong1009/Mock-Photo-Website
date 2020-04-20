@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title> Login Page</title>
+    <title> Home Page</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <script src="javascripts/togglelogin-out.js"></script>
 </head>
 
 <body>
@@ -16,19 +17,19 @@
             <h1>Photo App</h1>
         </div>
         <div class=button-style>
-            <button class="btn login" onclick='location.href="/login.html"'>Sign In</button>
-            <button class="btn register" onclick='location.href="/registration.html"'> Register</button>
+            <button class="btn" id="login" onclick='location.href="/login"'>Sign In</button>
+            <button class="btn" id="register" onclick='location.href="/register"'> Register</button>
         </div>
     </div>
     <div class="search-upload">
         <div class="search">
             <form class="bar">
-                <input type="text" id=searchbox placeholder="search" />
+                <input type="text" id=searchbox placeholder="search"/>
                 <input type="submit" submit=submit>
             </form>
         </div>
         <div class="upload-btn">
-            <button class="btn upload" onclick='location.href="/postimage.html"'> Upload</button>
+            <button class="btn" id="upload" onclick='location.href="/upload"'> Upload</button>
         </div>
     </div>
     <div class="grid-container">
@@ -46,8 +47,4 @@
     </div>
 
 </body>
-<footer>
-    All Rights Reserved Joanne Wong
-</footer>
-
 </html>

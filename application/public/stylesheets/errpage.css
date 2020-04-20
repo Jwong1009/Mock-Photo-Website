@@ -6,29 +6,33 @@ body {
     height: 75%;
 }
 
-#main {
+.main {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
- .input-form {
+#errblock {
     margin: auto;
     background-color: rgb(192, 185, 184); 
     box-shadow: 0 0 10px;
     text-align: center;
     padding: 1% 5% 2% 5%;
-} 
-
-input[type=submit] {
-    background-color: rgb(238, 238, 238);
 }
 
-#img {
-    display: flex;
+.button-style{
+    align-self: flex-end;
+    padding: 5px;
 }
 
-#img img {
-    margin: 0 10px 0 0;
+.btn {
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5%;
+}
+
+.btn:hover {
+    background: whitesmoke;
 }
 

@@ -17,19 +17,19 @@
     <div class="all-form">
         <div id="formdiv">
             <h2>Registration</h2>
-            <form id="inputs">
+            <form id="inputs" action="users/register" method="POST" enctype="application/x-www-form-urlencoded">
 
                 <label for="username"> Username</label>
                 <input type="text" name="username" required placeholder="Username" />
                 <br />
                 <label for="email"> Email</label>
-                <input type="email" email="Email" required placeholder="Email" />
+                <input type="email" name="email" required placeholder="Email" />
                 <br />
                 <label for="password"> Password </label>
-                <input type="password" password="password" required placeholder="Password" />
+                <input type="password" name="password" required placeholder="Password" />
                 <br />
-                <label for="Confirm password"> Confirm Password</label>
-                <input type="password" confirm password="password" required placeholder="Confirm password" />
+                <label for="password2"> Confirm Password</label>
+                <input type="password" name="password2" required placeholder="Confirm password" />
                 <br />
                 <input type="checkbox" checkbox="checkbox" required>
                 <label for="age"> I am 13 years old or older</label>
@@ -39,10 +39,9 @@
                         Privacy
                         Rules </a> </label>
                 <br />
-                <input type="submit" submit=submit required>
+                <input type="submit" value="submit" required>
             </form>
             <label for="login"> Have an account already? <a href="/login"> Sign In </a> </label>
         </div>
 </body>
-
 </html>
