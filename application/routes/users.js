@@ -62,39 +62,18 @@ router.post('/register', (req, res, next) => {
     })
 });
 
-// router.post('/login', (req, res, next) => {
-//   let username = req.body.username;
-//   let password = req.body.password;
-//   debugger
-//   db.execute('SELECT * FROM users WHERE username=? AND password=?', [username, password])
-//     .then(([results, fields]) => {
-//       if (results && results.length == 1) {
-//         successPrint("Successful Login");
-//         res.redirect('/');
-//       } else {
-//         throw new UserError("Failed login, username or password incorrect", 400);
-//       }
-//     })
-//     .catch((err) => {
-//       if (err instanceof UserError) {
-//         res.status(err.getStatus());
-//         res.json(err.getMessage());
-//       }
-//       next(err);
-//     })
-// });
-
-
 
 /* Login */
 router.post('/login', (req, res, next) => {
   let username = req.body.username;
   let password = req.body.password;
+  let userID = req.body.userID;
 
-  db.execute('SELECT password FROM users WHERE username=?', [username])
+  db.execute('SELECT id, password FROM users WHERE username=?', [username])
     .then(([results, fields]) => {
       if (results && results.length == 1) {
         let hPassword = results[0].password;
+        userID = results[0].id;
         return bcrypt.compare(password, hPassword);
       } else {
         throw new UserError("Failed login, username or password incorrect", 400);
@@ -103,6 +82,11 @@ router.post('/login', (req, res, next) => {
     .then((passwordMatchs) => {
       if (passwordMatchs) {
         successPrint("Login Successful");
+        req.session.username = username;
+        req.session.userID = userID;
+        
+        console.log(req.session);
+
         res.status(200).json({});
       } else {
         throw new UserError("Failed login, username or password incorrect", 400);
@@ -117,5 +101,18 @@ router.post('/login', (req, res, next) => {
     })
 });
 
+
+router.post('/logout', (req, res, next) => {
+  req.session.destroy((err) => {
+    if (err) {
+      errorPrint("Failed to destroy session");
+      next(err);
+    } else {
+      successPrint("Session was destroyed");
+      res.clearCookie('cscid');
+      res.redirect('/');
+    }
+  })
+});
 
 module.exports = router;

@@ -14,7 +14,7 @@ body {
     margin: 0 10px 10px 0;
 }
 
-.header-area, .search-upload-login{
+.header-area, .search-upload{
     display: flex;
     justify-content: space-between;
 } 
@@ -32,6 +32,9 @@ body {
     align-self: flex-end;
     padding: 5px;
 
+}
+.upload-btn {
+    display: flex;
 }
 
 .btn {

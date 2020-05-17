@@ -43,9 +43,8 @@ registerForm.onsubmit = (e) => {
                 parent.appendChild(errorMsg);
             }
         } else {
-            window.location.replace('/');
+            window.location.replace('/login');
         }
     })
 
 }
-
