@@ -17,4 +17,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+app.use((err, req, res, next) => {
+    debugger
+    console.log(err);
+    res.sendFile("errpage.html", { root: "public" });
+});
+
+
 module.exports = app;
+

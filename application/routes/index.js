@@ -25,7 +25,7 @@ router.get('/photo', function(req, res, next) {
 });
 
 /* GET error page. */
-router.get('/error', function(req, res, next) {
-  res.sendFile('errpage.html', {root: 'public/'});
-});
+// router.get('/error', function(req, res, next) {
+//   res.sendFile('errpage.html', {root: 'public/'});
+// });
 module.exports = router;

@@ -1,0 +1,38 @@
+let registerForm = document.getElementById('inputs');
+
+
+registerForm.onsubmit = (e) => {
+// function register (e) {
+    e.preventDefault();
+
+    let username = e.target[0].value
+    let email = e.target[1].value
+    let password = e.target[2].value
+    let password2 = e.target[3].value
+
+    let data = {
+        username,
+        email,
+        password,
+        password2
+    }
+    
+    fetch('/users/register', {
+        method: 'POST',
+        headers: {
+            'Accept' : 'application/json',
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(resp => {
+        return resp.json();
+    }).then(json => {
+
+        let parent = document.getElementById('formdiv');
+        let errorMsg = document.createElement("LI");
+        errorMsg.innerText = json;
+        errorMsg.setAttribute('class', 'error-msg')
+        parent.appendChild(errorMsg);
+    })
+}
+
