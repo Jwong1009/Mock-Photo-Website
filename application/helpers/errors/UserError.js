@@ -1,8 +1,8 @@
 class UserError extends Error {
-    constructor(message, redirectURL, status) {
+    constructor(message, status) {
         super(message);
         this.message = message;
-        this.redirectURL = redirectURL;
+        // this.redirectURL = redirectURL;
         this.status = status;
     }
 
@@ -10,9 +10,9 @@ class UserError extends Error {
         return this.message;
     }
 
-    getRedirectURL() {
-        return this.redirectURL;
-    }
+    // getRedirectURL() {
+    //     return this.redirectURL;
+    // }
 
     getStatus() {
         return this.status;
