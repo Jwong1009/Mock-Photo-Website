@@ -39,7 +39,7 @@ router.post('/register', (req, res, next) => {
     .then(([results, fields]) => {
       if (results && results.affectedRows) {
         successPrint('user has been created');
-        res.redirect('/login');
+        res.status(200).json({});
       } else {
         throw new UserError('Server Error, user could not be created', '/register', 500);
       }
