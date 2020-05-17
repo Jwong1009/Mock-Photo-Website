@@ -62,21 +62,58 @@ router.post('/register', (req, res, next) => {
     })
 });
 
+// router.post('/login', (req, res, next) => {
+//   let username = req.body.username;
+//   let password = req.body.password;
+//   debugger
+//   db.execute('SELECT * FROM users WHERE username=? AND password=?', [username, password])
+//     .then(([results, fields]) => {
+//       if (results && results.length == 1) {
+//         successPrint("Successful Login");
+//         res.redirect('/');
+//       } else {
+//         throw new UserError("Failed login, username or password incorrect", 400);
+//       }
+//     })
+//     .catch((err) => {
+//       if (err instanceof UserError) {
+//         res.status(err.getStatus());
+//         res.json(err.getMessage());
+//       }
+//       next(err);
+//     })
+// });
+
+
+
 /* Login */
 router.post('/login', (req, res, next) => {
   let username = req.body.username;
   let password = req.body.password;
 
-  let baseSQL = 'SELECT * FROM Users WHERE Username=? AND Password=?;';
-  db.query(baseSQL, [username, password]).then(([results, fields]) => {
-    if (results.length === 1) {
-      res.redirect('/');
-    } else {
-      res.redirect('/error');
-    }
-  })
-    .catch(error => {
-      res.redirect("/error");
+  db.execute('SELECT password FROM users WHERE username=?', [username])
+    .then(([results, fields]) => {
+      if (results && results.length == 1) {
+        let hPassword = results[0].password;
+        return bcrypt.compare(password, hPassword);
+      } else {
+        throw new UserError("Failed login, username or password incorrect", 400);
+      }
+    })
+    .then((passwordMatchs) => {
+      if (passwordMatchs) {
+        successPrint("Login Successful");
+        res.status(200).json({});
+      } else {
+        throw new UserError("Failed login, username or password incorrect", 400);
+      }
+    })
+    .catch((err) => {
+      if (err instanceof UserError) {
+        res.status(err.getStatus());
+        res.json(err.getMessage());
+      }
+      next(err);
     })
 });
 

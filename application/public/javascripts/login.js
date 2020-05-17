@@ -1,23 +1,21 @@
-let registerForm = document.getElementById('inputs');
+let loginForm = document.getElementById('inputs');
 
 
-registerForm.onsubmit = (e) => {
+loginForm.onsubmit = (e) => {
     e.preventDefault();
 
-    let username = e.target[0].value
-    let email = e.target[1].value
-    let password = e.target[2].value
-    let password2 = e.target[3].value
+    let username = e.target[0].value;
+    let password = e.target[1].value;
 
     let data = {
         username,
-        email,
-        password,
-        password2
+        password
     }
     let status;
 
-    fetch('/users/register', {
+    debugger
+
+    fetch('/users/login', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -28,14 +26,12 @@ registerForm.onsubmit = (e) => {
         status = resp.status;
         return resp.json();
     }).then(json => {
-
         if (status !== 200) {
             let errorMsg = document.getElementById('error-msg-li');
-            debugger
             if (errorMsg) {
                 errorMsg.innerText = json;
             } else {
-                let parent = document.getElementById('formdiv');
+                let parent = document.getElementById('input-form');
                 errorMsg = document.createElement("LI");
                 errorMsg.innerText = json;
                 errorMsg.setAttribute('class', 'error-msg');
@@ -46,6 +42,4 @@ registerForm.onsubmit = (e) => {
             window.location.replace('/');
         }
     })
-
 }
-

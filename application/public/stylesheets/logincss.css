@@ -12,7 +12,7 @@ body {
     align-items: center;
     height: 100%;
 }
- .input-form {
+ #input-form {
     margin: auto;
     background-color: rgb(192, 185, 184); 
     box-shadow: 0 0 10px;
@@ -30,5 +30,10 @@ input[type=submit] {
 
 #img img {
     margin: 0 10px 0 0;
+}
+
+.error-msg {
+    margin-top: 5px;
+    color: rgb(165, 52, 52);
 }
 
