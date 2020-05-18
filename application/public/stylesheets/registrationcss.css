@@ -32,3 +32,8 @@ input[type=submit] {
 #img img {
     margin: 0 10px 0 0;
 }
+
+.error-msg {
+    margin-top: 5px;
+    color: rgb(165, 52, 52);
+}

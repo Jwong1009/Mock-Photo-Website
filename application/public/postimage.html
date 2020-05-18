@@ -17,12 +17,12 @@
     <div id="all-form">
         <div id="formdiv">
             <h2>Upload an Image </h2>
-            <form>
+            <form id=post-image-form action="/posts/createPost" method="POST" enctype="multipart/form-data">
                 <label for="title"> Title</label>
-                <input type="text" title="title" placeholder="Image Title" required />
+                <input type="text" id="title" name="title" placeholder="Image Title" required />
                 <br />
                 <label for="Description"> Description</label>
-                <input type="text" description=description placeholder="Description of Image" required/>
+                <input type="text" id="description" name=description placeholder="Description of Image" required/>
                 <br/>
                 <label for="select"> Select image: </label>
                 <input type="file" id="img" name="img" accept="image/*" required/>
@@ -35,6 +35,7 @@
             </form>
         </div>
     </div>
+    <script src="javascripts/posts-1.js"> </script>
 </body>
 
 </html>
