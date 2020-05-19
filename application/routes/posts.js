@@ -82,4 +82,21 @@ router.get("/getRecentPosts", (req, res, next) => {
         .catch((err) => next(err));
 });
 
+
+router.get('/photo/:id', (req, res, next) => {
+    res.sendFile('singleimg.html', { root: 'public/html' });
+});
+
+router.get('/getPostByID/:id', (req, res, next) => {
+    let id = req.params.id;
+    let SQL = 'SELECT p.id, p.title, p.description, p.photopath, u.username \
+    FROM posts p \
+    JOIN users u on p.fk_userid=u.id \
+    WHERE p.id=?;'; 
+    db.query(SQL, id)
+        .then(([results, fields]) => {
+            res.json(results);
+        })
+        .catch((err) => next(err));
+})
 module.exports = router;

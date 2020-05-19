@@ -24,9 +24,9 @@ router.get('/upload', function(req, res, next) {
 });
 
 /* GET single page. */
-router.get('/photo', function(req, res, next) {
-  res.sendFile('singleimg.html', {root: 'public/html'});
-});
+// router.get('/photo', function(req, res, next) {
+//   res.sendFile('singleimg.html', {root: 'public/html'});
+// });
 
 
 

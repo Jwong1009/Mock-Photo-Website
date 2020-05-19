@@ -13,7 +13,7 @@ body {
     margin: 0 10px 10px 0;
 }
 
-h2 {
+#photo-title {
     font-size: 35px;
     color: rgb(77, 76, 76);
     font-weight: bold;
@@ -21,20 +21,25 @@ h2 {
 }
 
 .photo-area img {
-    border: 1.5px solid black;
+    box-shadow: 0 0 5px;
+    border-bottom: 1.5px solid black;
+    border-right: 1.5px solid black;
+    width: 100%;
+    max-width: 300px;
 }
 .photo-area {
     display: flex;
     width: fit-content;
     flex-direction: column;
-
 }
 
-.description {
+#information {
     margin: 24px;
     background-color: rgb(192, 185, 184); 
-    box-shadow: 0 0 10px;
-    text-align: left;
+    box-shadow: 0 0 5px;
+    border-bottom: 1.5px solid black;
+    border-right: 1.5px solid black;
+    text-align: center;
     padding: 2% 5% 2% 5%;
     width: 240px;
     height: 150px;
@@ -42,28 +47,21 @@ h2 {
 .chatbox {
     margin: 24px;
     background-color: rgb(192, 185, 184); 
-    box-shadow: 0 0 10px;
+    box-shadow: 0 0 5px;
+    border-bottom: 1.5px solid black;
+    border-right: 1.5px solid black;
     text-align: left;
     padding: 2% 5% 2% 5%;
     align-content: center;
     width: 500px;
 }
-.chat {
+/* .chat {
     background-color: white;
     width: 500px;
     height: 600px;
     height: 50%;
     text-align: right;
-}
-
-
-.item {
-    width: 600px;
-    min-height: 120px;
-    float: left;
-    margin: 3px;
-    padding: 1px;
-}
+} */
 
 .photo-descript {
     display: flex;
@@ -76,5 +74,12 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+#photo-title {
+    text-transform: capitalize;
+    text-shadow: 1px 1px grey;
+}
 
+#photo-owner-uname, #photo-description {
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }

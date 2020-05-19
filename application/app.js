@@ -37,11 +37,5 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/posts', postRouter);
 
-// app.use((err, req, res, next) => {
-//     console.log(err);
-//     res.sendFile("errpage.html", { root: "public" });
-// });
-
-
 module.exports = app;
 
