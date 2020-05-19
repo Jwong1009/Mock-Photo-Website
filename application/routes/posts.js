@@ -69,4 +69,17 @@ router.get("/search/:searchTerm", (req, res, next) => {
         .catch((err) => next(err));
 });
 
+router.get("/getRecentPosts", (req, res, next) => {
+    let SQL = 'SELECT p.id, p.title, p.description, p.thumbnail, u.username \
+    FROM posts p \
+    JOIN users u on p.fk_userid=u.id \
+    ORDER BY p.created DESC \
+    LIMIT 9;'; 
+    db.query(SQL)
+        .then(([results, fields]) => {
+            res.json(results);
+        })
+        .catch((err) => next(err));
+});
+
 module.exports = router;

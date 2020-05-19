@@ -4,8 +4,9 @@ var isLoggedIn = require('../public/middleware/routeProtectors').userIsLoggedIn;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.sendFile('index.html', {root: 'public/html'});
+  res.sendFile('index.html', { root: 'public/html' });
 });
+
 /* GET login page. */
 router.get('/login', function(req, res, next) {
   res.sendFile('login.html', {root: 'public/html'});
@@ -26,5 +27,7 @@ router.get('/upload', function(req, res, next) {
 router.get('/photo', function(req, res, next) {
   res.sendFile('singleimg.html', {root: 'public/html'});
 });
+
+
 
 module.exports = router;

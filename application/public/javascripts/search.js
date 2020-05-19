@@ -38,3 +38,19 @@ submitEvent.onclick = (e) => {
         });
 }
 
+fetch("http://localhost:3000/posts/getRecentPosts")
+.then((res) => {
+    return res.json();
+})
+.then((data) => {
+    let html = "";
+    data.forEach((post) => {
+        html += createTile(post);
+    })
+    document.getElementById('grid-container').innerHTML = html;
+})
+.catch((err) => {
+    console.log("Error");
+    let error = "Could not populate";
+    alert(error);
+});
