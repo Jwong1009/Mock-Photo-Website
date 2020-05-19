@@ -30,8 +30,8 @@ var sessionOptions = {
 
 app.use((session)(sessionOptions));
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.use("/images", express.static(path.join(__dirname, "public/images")));
+app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use("/images", express.static(path.join(__dirname, "/public/images")));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

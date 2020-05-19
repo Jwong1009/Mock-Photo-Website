@@ -31,7 +31,7 @@ router.post('/createPost', uploader.single('img'), (req, res, next) => {
     let fk_userid = req.session.userID;
 
     sharp(fileUploaded)
-        .resize(300)
+        .resize(280)
         .toFile(destofThumbnail)
         .then(() => {
             let baseSQL = 'INSERT INTO posts (title, description, photopath, thumbnail, created, fk_userid) VALUE (?, ?, ?, ?, now(), ?);'
@@ -52,6 +52,21 @@ router.post('/createPost', uploader.single('img'), (req, res, next) => {
 
     console.log(req.body);
     console.log(req.file);
+});
+
+router.get("/search/:searchTerm", (req, res, next) => {
+    let searchTerm = req.params.searchTerm;
+    console.log(searchTerm);
+    let SQL = 'SELECT p.id, p.title, p.description, p.thumbnail, u.username \
+    FROM posts p \
+    JOIN users u on p.fk_userid=u.id \
+    WHERE title LIKE ?;';
+    searchTerm = "%" + searchTerm + "%"; 
+    db.query(SQL, [searchTerm])
+        .then(([results, fields]) => {
+            res.json(results);
+        })
+        .catch((err) => next(err));
 });
 
 module.exports = router;
