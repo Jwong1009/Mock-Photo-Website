@@ -40,7 +40,7 @@ router.post('/createPost', uploader.single('img'), (req, res, next) => {
         .then(([results, fields]) => {
             if (results && results.affectedRows) {
                 successPrint("new post created");
-                res.status(200).json({message: "Post created succesfully"});
+                res.status(200).json({ message: "Post created succesfully" });
             } else {
                 res.status(400).json({ message: "Unable to create post" });
             }
@@ -61,7 +61,7 @@ router.get("/search/:searchTerm", (req, res, next) => {
     FROM posts p \
     JOIN users u on p.fk_userid=u.id \
     WHERE title LIKE ?;';
-    searchTerm = "%" + searchTerm + "%"; 
+    searchTerm = "%" + searchTerm + "%";
     db.query(SQL, [searchTerm])
         .then(([results, fields]) => {
             res.json(results);
@@ -73,8 +73,7 @@ router.get("/getRecentPosts", (req, res, next) => {
     let SQL = 'SELECT p.id, p.title, p.description, p.thumbnail, u.username \
     FROM posts p \
     JOIN users u on p.fk_userid=u.id \
-    ORDER BY p.created DESC \
-    LIMIT 9;'; 
+    ORDER BY p.created DESC;';
     db.query(SQL)
         .then(([results, fields]) => {
             res.json(results);
@@ -82,18 +81,33 @@ router.get("/getRecentPosts", (req, res, next) => {
         .catch((err) => next(err));
 });
 
-
 router.get('/photo/:id', (req, res, next) => {
     res.sendFile('singleimg.html', { root: 'public/html' });
 });
 
 router.get('/getPostByID/:id', (req, res, next) => {
     let id = req.params.id;
-    let SQL = 'SELECT p.id, p.title, p.description, p.photopath, u.username \
+    //selecting posts with comments
+    let SQL = 'SELECT p.id, p.title, p.description, p.photopath, p.created, u.username AS post_author, u2.username AS comment_author, c.comment, c.date \
     FROM posts p \
-    JOIN users u on p.fk_userid=u.id \
-    WHERE p.id=?;'; 
+    JOIN (users u, comments c, users u2) ON (p.fk_userid=u.id AND c.post_id=p.id AND c.author_id=u2.id) \
+    WHERE p.id=?';
+
+    //selecting posts without comments
+    let SQL_nocomments = 'SELECT p.id, p.title, p.description, p.photopath, p.created, u.username AS post_author \
+    FROM posts p \
+    JOIN users u ON p.fk_userid=u.id \
+    WHERE p.id=?';
+    debugger
     db.query(SQL, id)
+        .then(([results, fields]) => {
+            if (results && results.length == 0) {
+                return db.query(SQL_nocomments, id)
+            } else {
+                console.log(results);
+                res.json(results);
+            }
+        })
         .then(([results, fields]) => {
             res.json(results);
         })

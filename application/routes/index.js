@@ -23,11 +23,4 @@ router.get('/upload', function(req, res, next) {
   res.sendFile('postimage.html', {root: 'public/html'});
 });
 
-/* GET single page. */
-// router.get('/photo', function(req, res, next) {
-//   res.sendFile('singleimg.html', {root: 'public/html'});
-// });
-
-
-
 module.exports = router;

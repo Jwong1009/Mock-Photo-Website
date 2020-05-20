@@ -28,7 +28,6 @@ registerForm.onsubmit = (e) => {
         status = resp.status;
         return resp.json();
     }).then(json => {
-
         if (status !== 200) {
             let errorMsg = document.getElementById('error-msg-li');
             debugger

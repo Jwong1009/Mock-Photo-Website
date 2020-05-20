@@ -16,7 +16,6 @@ postForm.onsubmit = (e) => {
         })
         .then((resObj) => {
             if (status !== 200) {
-                debugger
                 alert(resObj.message);
             } else {
                 window.location.replace('/');
