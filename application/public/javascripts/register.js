@@ -42,6 +42,7 @@ registerForm.onsubmit = (e) => {
                 parent.appendChild(errorMsg);
             }
         } else {
+            alert("User successfully created, please log in");
             window.location.replace('/login');
         }
     })
