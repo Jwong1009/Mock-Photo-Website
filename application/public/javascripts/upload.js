@@ -12,11 +12,11 @@ postForm.onsubmit = (e) => {
     })
         .then((res) => {
             status = res.status;
+            
             return res.json();
         })
         .then((resObj) => {
             if (status !== 200) {
-                debugger
                 alert(resObj.message);
             } else {
                 window.location.replace('/');

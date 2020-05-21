@@ -13,56 +13,11 @@ body {
     margin: 0 10px 10px 0;
 }
 
-h2 {
-    font-size: 35px;
-    color: rgb(77, 76, 76);
-    font-weight: bold;
-    margin: 0;
-}
-
-.photo-area img {
-    border: 1.5px solid black;
-}
-.photo-area {
+.all {
     display: flex;
-    width: fit-content;
     flex-direction: column;
-
-}
-
-.description {
-    margin: 24px;
-    background-color: rgb(192, 185, 184); 
-    box-shadow: 0 0 10px;
-    text-align: left;
-    padding: 2% 5% 2% 5%;
-    width: 240px;
-    height: 150px;
-}
-.chatbox {
-    margin: 24px;
-    background-color: rgb(192, 185, 184); 
-    box-shadow: 0 0 10px;
-    text-align: left;
-    padding: 2% 5% 2% 5%;
-    align-content: center;
-    width: 500px;
-}
-.chat {
-    background-color: white;
-    width: 500px;
-    height: 600px;
-    height: 50%;
-    text-align: right;
-}
-
-
-.item {
-    width: 600px;
-    min-height: 120px;
-    float: left;
-    margin: 3px;
-    padding: 1px;
+    justify-content: center;
+    align-items: center;
 }
 
 .photo-descript {
@@ -71,10 +26,56 @@ h2 {
     align-items: center;
 }
 
-.all {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+#photo-title {
+    font-size: 35px;
+    color: rgb(77, 76, 76);
+    font-weight: bold;
+    text-transform: capitalize;
+    text-shadow: 1px 1px grey;
+    padding: 10px;
+}
 
+.photo-area img {
+    box-shadow: 0 0 5px;
+    border-bottom: 1.5px solid black;
+    border-right: 1.5px solid black;
+    width: 100%;
+    max-width: 300px;
+}
+.photo-area {
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+}
+
+#information {
+    margin: 20px;
+    background-color: rgb(192, 185, 184); 
+    box-shadow: 0 0 5px;
+    border-bottom: 1.5px solid black;
+    border-right: 1.5px solid black;
+    text-align: center;
+    padding: 2% 5% 2% 5%;
+    width: 240px;
+    height: 150px;
+}
+
+#photo-owner-uname, #photo-description {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.chatbox {
+    margin: 24px;
+    background-color: rgb(192, 185, 184); 
+    box-shadow: 0 0 5px;
+    border-bottom: 1.5px solid black;
+    border-right: 1.5px solid black;
+    text-align: left;
+    padding: 2% 0% 2% 3%;
+    align-content: center;
+    width: 500px;
+}
+
+#comments-section {
+    padding-bottom: 10px;
 }

@@ -48,12 +48,12 @@ body {
     background: whitesmoke;
 }
 
-.grid-container {
+#grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);    
     grid-template-rows: repeat(3, 1fr);
     justify-items: center;
-    gap: 5px;
+    gap: 20px;
     place-items: center;
     margin-top: 25px;
     min-width: 50%;
@@ -61,15 +61,34 @@ body {
 
 .picture-grid {
     text-align: center;
-    padding: 10px;
     width: 300px;
     height: 300px;
-    overflow: auto;
+    box-shadow: 0 0 5px;
+    border-bottom: 1.5px solid black;
+    border-right: 1.5px solid black;
+    overflow: hidden;
+
 }
-.picture-grid img {
-    align-items: center;
-    max-height: 100%;
+.title-of-photo {
+    padding: 5px;
+    font-weight: bold;
+    font-size: large;
+    background-color: rgb(192, 185, 184); 
 }
-.picture-grid img:hover{
-    opacity: 80%;
+.photo-owner-uname {
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+    font-weight: bold;
+    background-color: rgb(192, 185, 184); 
+}
+
+.photo {
+    padding-top: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    
 }

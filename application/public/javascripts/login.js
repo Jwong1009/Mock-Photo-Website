@@ -42,4 +42,8 @@ loginForm.onsubmit = (e) => {
             window.location.replace('/');
         }
     })
+        .catch((err) => {
+            let error = "Error, please try again later";
+            alert(error);
+    })
 }

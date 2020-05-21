@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title> Photo </title>
+    <link rel="stylesheet" type="text/css" href="/public/stylesheets/singleimgcss.css">
+</head>
+
+<body>
+    <div id="logo">
+        <a href="/">
+            <img src="/public/images/camera-logo.png" alt="home" width="100" height="100">
+        </a>
+        <h1>Photo App</h1>
+    </div>
+
+    <div class="all">
+        <div class="photo-descript">
+            <div class="photo-area">
+                <div id="photo-title"></div>
+                <img id="photo" src="#" />
+            </div>
+
+            <div id="information">
+                <div id="photo-owner-uname"></div>
+                <br />
+                <div id="photo-description"></div>
+                <br/>
+                <div id="photo-created-date"></div>
+            </div>
+        </div>
+
+        <div class="chatbox">
+            <div id="comments-section"> Comments Section: </div>
+                <div id="commentlist"></div>
+                <br />
+            <div class="chatlogs">
+                <form id="usercomment">
+                    <label for="usercomment"> </label>
+                    <textarea id="usercomment" rows="6" cols="70" name="usercomment" placeholder="Enter a Comment"></textarea>
+                    <br />
+                    <input type="submit" id="submit" required />
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="/public/javascripts/singlepg.js"></script>
+    <script src="/public/javascripts/comments.js"></script>
+</body>
+
+</html>
