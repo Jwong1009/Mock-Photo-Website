@@ -1,30 +1,44 @@
-var isLoggedIn = require('../public/middleware/routeProtectors').userIsLoggedIn;
+let submitComment = document.getElementById('usercomment');
 
-commentSubmit = document.getElementById('submit');
-
-commentSubmit.onsubmit = (e) => {
+submitComment.onsubmit = (e) => {
     e.preventDefault();
-    e.isLoggedIn;       //?? does this work lol
+
+    let data = {
+        comment: e.target[0].value
+    }
+    let status;
+
+    let id = document.URL.split('/')[link.length - 1];
 
     debugger
-    
-    let comment = e.target[0].value;
-
-    fetch('post/getPostByID/:id', {
-        method: 'POST',
+    fetch(`/posts/${id}/uploadComments`, {
+        body: JSON.stringify(data),
         headers: {
+            'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data)
-            .then((res) => {
-                return res.json();
-            })
-            .then((json) => {
-                console.log(json);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-
+        method: 'POST',
     })
+        .then((res) => {
+            debugger
+            status = res.status;
+            if (res.redirected) {
+                window.location.replace(res.url);
+            }
+            return res.json();
+        })
+        .then((resObj) => {
+            debugger
+            if (status !== 200) {
+                alert(resObj.message);
+            } else {
+                location.replace(document.URL);
+            }
+        })
+        .catch((err) => {
+            debugger
+
+
+
+        })
 }

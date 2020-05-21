@@ -3,6 +3,8 @@ var router = express.Router();
 const db = require('../config/database');
 const errorPrint = require('../helpers/debug/debughelpers').errorPrint;
 const successPrint = require('../helpers/debug/debughelpers').successPrint;
+var isLoggedIn = require('../public/middleware/routeProtectors').userIsLoggedIn;
+
 
 const multer = require('multer');
 const sharp = require('sharp');
@@ -49,9 +51,6 @@ router.post('/createPost', uploader.single('img'), (req, res, next) => {
             res.status(500).json({ message: err });
 
         });
-
-    console.log(req.body);
-    console.log(req.file);
 });
 
 router.get("/search/:searchTerm", (req, res, next) => {
@@ -90,27 +89,39 @@ router.get('/getPostByID/:id', (req, res, next) => {
     //selecting posts with comments
     let SQL = 'SELECT p.id, p.title, p.description, p.photopath, p.created, u.username AS post_author, u2.username AS comment_author, c.comment, c.date \
     FROM posts p \
-    JOIN (users u, comments c, users u2) ON (p.fk_userid=u.id AND c.post_id=p.id AND c.author_id=u2.id) \
+    LEFT JOIN users u ON p.fk_userid=u.id \
+    LEFT JOIN (comments c, users u2) ON (c.post_id=p.id AND c.author_id=u2.id) \
     WHERE p.id=?';
 
-    //selecting posts without comments
-    let SQL_nocomments = 'SELECT p.id, p.title, p.description, p.photopath, p.created, u.username AS post_author \
-    FROM posts p \
-    JOIN users u ON p.fk_userid=u.id \
-    WHERE p.id=?';
     debugger
     db.query(SQL, id)
         .then(([results, fields]) => {
-            if (results && results.length == 0) {
-                return db.query(SQL_nocomments, id)
-            } else {
-                console.log(results);
+            if (results && results.length !== 0) {
+                successPrint("Post acquired");
                 res.json(results);
+            } else {
+                errorPrint("Could not find posts");
+                res.status(400).json({ message: "Unable to retrieve post" });            
             }
-        })
-        .then(([results, fields]) => {
-            res.json(results);
         })
         .catch((err) => next(err));
 })
+
+router.use('/:id/uploadComments', isLoggedIn);
+router.post('/:id/uploadComments', (req, res, next) => {
+    let author = req.session.userID;
+    let comment = req.body.comment;
+    let postID = parseInt(req.params.id);
+    debugger
+    let SQL = 'INSERT INTO comments (comment, date, author_id, post_id) VALUES (?, NOW(), ?, ?);';
+    db.execute(SQL, [comment, author, postID])
+        .then(() => {
+            res.redirect(`/posts/photo/${postID}`);
+
+        })
+        .catch((err) => {
+            res.status(500).json({ message: err });
+        })
+})
+
 module.exports = router;

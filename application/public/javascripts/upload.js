@@ -12,6 +12,7 @@ postForm.onsubmit = (e) => {
     })
         .then((res) => {
             status = res.status;
+            
             return res.json();
         })
         .then((resObj) => {

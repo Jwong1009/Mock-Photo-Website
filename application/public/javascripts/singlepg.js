@@ -6,13 +6,13 @@ function createComment(data) {
 
 let link = document.URL.split('/');
 let id = link[link.length - 1];
-debugger
 let postURL = "http://localhost:3000/posts/getPostByID/" + id;
 fetch(postURL)
     .then((res) => {
         return res.json();
     })
     .then((data) => {
+        debugger
         let photopath = 'http://localhost:3000/' + data[0].photopath;
         document.getElementById('photo-title').innerHTML = data[0].title;
         document.getElementById('photo').src = photopath;
@@ -20,7 +20,7 @@ fetch(postURL)
         document.getElementById('photo-description').innerHTML = "Description: " + data[0].description;
         document.getElementById('photo-created-date').innerHTML = "Date created: " + new Date(data[0].created).toLocaleString('en-US');
 
-        if (data[0].hasOwnProperty('comment')) {
+        if (data[0].comment) {
             let html = "";
             data.forEach((comment) => {
                 html += createComment(comment);
