@@ -22,4 +22,4 @@ Please follow the instructions below and fill in the information requested when 
 1. npm install
 
 ## Run Instructions
-1. npm run dev
+1. npm start
