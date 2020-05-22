@@ -23,7 +23,7 @@ var sessionOptions = {
     key: "cscid",
     secret: "secret code",
     store: sessionStore,
-    cookie: { secure: false, httpOnly: false, maxAge: 900000 },
+    cookie: { secure: false, httpOnly: false, maxAge: 9000000 },
     resave: false, 
     saveUninitialized: false
 }

@@ -10,7 +10,6 @@ submitComment.onsubmit = (e) => {
 
     let id = document.URL.split('/')[link.length - 1];
 
-    debugger
     fetch(`/posts/${id}/uploadComments`, {
         body: JSON.stringify(data),
         headers: {
@@ -20,7 +19,6 @@ submitComment.onsubmit = (e) => {
         method: 'POST',
     })
         .then((res) => {
-            debugger
             status = res.status;
             if (res.redirected) {
                 window.location.replace(res.url);
@@ -28,7 +26,6 @@ submitComment.onsubmit = (e) => {
             return res.json();
         })
         .then((resObj) => {
-            debugger
             if (status !== 200) {
                 alert(resObj.message);
             } else {
@@ -36,9 +33,6 @@ submitComment.onsubmit = (e) => {
             }
         })
         .catch((err) => {
-            debugger
-
-
-
+            
         })
 }

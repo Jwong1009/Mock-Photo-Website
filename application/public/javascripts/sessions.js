@@ -9,7 +9,6 @@ function logoutClick() {
     let fetchURL = 'http://localhost:3000/users/logout';
     fetch(fetchURL, fetchOptions)
         .then((data) => {
-            console.log(data);
             let logButton = document.getElementById('login');
             logButton.innerHTML = "Sign In";
             logButton.setAttribute('href', '/login');

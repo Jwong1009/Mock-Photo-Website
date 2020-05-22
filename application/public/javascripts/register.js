@@ -30,7 +30,6 @@ registerForm.onsubmit = (e) => {
     }).then(json => {
         if (status !== 200) {
             let errorMsg = document.getElementById('error-msg-li');
-            debugger
             if (errorMsg) {
                 errorMsg.innerText = json;
             } else {
@@ -42,6 +41,7 @@ registerForm.onsubmit = (e) => {
                 parent.appendChild(errorMsg);
             }
         } else {
+            alert("User successfully created, please log in");
             window.location.replace('/login');
         }
     })

@@ -44,7 +44,6 @@ fetch("http://localhost:3000/posts/getRecentPosts")
         document.getElementById('grid-container').innerHTML = html;
     })
     .catch((err) => {
-        console.log("Error");
         let error = "Could not populate";
         alert(error);
     });
