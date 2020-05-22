@@ -57,7 +57,9 @@ const UserModel = {
             .then(([results, fields]) => {
                 return Promise.resolve((results && results.length == 0));
             })
-            .catch((err) => { throw err; });
+            .catch((err) => {
+                throw err;
+            });
     }
 
 }
