@@ -21,18 +21,15 @@ const UserModel = {
         let userID;
         return db.execute('SELECT id, password FROM users WHERE username=?', [username])
             .then(([results, fields]) => {
-                debugger
                 if (results && results.length == 1) {
                     userID = results[0].id;
                     hashed = results[0].password;
-                    debugger
                     return bcrypt.compare(password, hashed);
                 } else {
                     throw new UserError("Failed login, username or password incorrect", 400);
                 }
             })
             .then((hashesMatch) => { //--> RETURNS FALSE FOR NEWLY MADE USERS
-                debugger
                 if (hashesMatch) {
                     return Promise.resolve({ user: username, uid: userID });
                 } else {

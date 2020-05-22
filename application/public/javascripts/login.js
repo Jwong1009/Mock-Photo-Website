@@ -13,8 +13,6 @@ loginForm.onsubmit = (e) => {
     }
     let status;
 
-    debugger
-
     fetch('/users/login', {
         method: 'POST',
         headers: {
@@ -43,6 +41,7 @@ loginForm.onsubmit = (e) => {
         }
     })
         .catch((err) => {
+            console.log("Error");
             let error = "Error, please try again later";
             alert(error);
     })

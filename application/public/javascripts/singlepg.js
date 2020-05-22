@@ -12,7 +12,6 @@ fetch(postURL)
         return res.json();
     })
     .then((data) => {
-        debugger
         let photopath = 'http://localhost:3000/' + data[0].photopath;
         document.getElementById('photo-title').innerHTML = data[0].title;
         document.getElementById('photo').src = photopath;
